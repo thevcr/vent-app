@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS vent_db;
+
+CREATE DATABASE vent_db;
