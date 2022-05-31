@@ -5,7 +5,6 @@ const withAuth = require('../../utils/auth');
 
 // get all users
 router.get('/', (req, res) => {
-  console.log('======================');
   Vent.findAll({
     attributes: [
       'id',
@@ -76,7 +75,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.vent('/', withAuth, (req, res) => {
+router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', vent_url: 'https://taskmaster.com/press', user_id: 1}
   Vent.create({
     title: req.body.title,

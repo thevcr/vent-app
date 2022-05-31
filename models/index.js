@@ -16,16 +16,15 @@ Vent.belongsTo(User, {
 
 User.belongsToMany(Vent, {
   through: Vote,
-  as: 'voted_posts',
-
+  as: 'voted_vents',
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
 Vent.belongsToMany(User, {
   through: Vote,
-  as: 'voted_posts',
-  foreignKey: 'post_id',
+  as: 'voted_vents',
+  foreignKey: 'vent_id',
   onDelete: 'SET NULL'
 });
 
@@ -35,7 +34,7 @@ Vote.belongsTo(User, {
 });
 
 Vote.belongsTo(Vent, {
-  foreignKey: 'post_id',
+  foreignKey: 'vent_id',
   onDelete: 'SET NULL'
 });
 
@@ -44,7 +43,7 @@ User.hasMany(Vote, {
 });
 
 Vent.hasMany(Vote, {
-  foreignKey: 'post_id'
+  foreignKey: 'vent_id'
 });
 
 Comment.belongsTo(User, {
@@ -53,7 +52,7 @@ Comment.belongsTo(User, {
 });
 
 Comment.belongsTo(Vent, {
-  foreignKey: 'post_id',
+  foreignKey: 'vent_id',
   onDelete: 'SET NULL'
 });
 
@@ -63,7 +62,7 @@ User.hasMany(Comment, {
 });
 
 Vent.hasMany(Comment, {
-  foreignKey: 'post_id'
+  foreignKey: 'vent_id'
 });
 
 module.exports = { User, Vent, Vote, Comment };
