@@ -12,7 +12,7 @@ Vote.init(
     },
     user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        //allowNull: false,
         references: {
             model: 'user',
             key: 'id'
@@ -20,7 +20,7 @@ Vote.init(
     },
     vent_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        //allowNull: false,
         references: {
             model: 'vent',
             key: 'id'

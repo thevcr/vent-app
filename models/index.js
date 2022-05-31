@@ -14,19 +14,19 @@ Vent.belongsTo(User, {
   onDelete: 'SET NULL'
 });
 
-User.belongsToMany(Vent, {
-  through: Vote,
-  as: 'voted_vents',
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
-});
+// User.belongsToMany(Vent, {
+//   through: Vote,
+//   as: 'voted_vents',
+//   foreignKey: 'user_id',
+//   onDelete: 'SET NULL'
+// });
 
-Vent.belongsToMany(User, {
-  through: Vote,
-  as: 'voted_vents',
-  foreignKey: 'vent_id',
-  onDelete: 'SET NULL'
-});
+// Vent.belongsToMany(User, {
+//   through: Vote,
+//   as: 'voted_vents',
+//   foreignKey: 'vent_id',
+//   onDelete: 'SET NULL'
+// });
 
 Vote.belongsTo(User, {
   foreignKey: 'user_id',
