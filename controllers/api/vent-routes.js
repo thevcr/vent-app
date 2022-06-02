@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   Vent.findAll({
     attributes: [
       'id',
-      'vent_url',
+      'vent_text',
       'title',
       'created_at',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE vent.id = vote.vent_id)'), 'vote_count']
@@ -42,7 +42,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
       'id',
-      'vent_url',
+      'vent_text',
       'title',
       'created_at',
       [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE vent.id = vote.vent_id)'), 'vote_count']
@@ -76,10 +76,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', vent_url: 'https://taskmaster.com/press', user_id: 1}
+  // expects {title: 'Taskmaster goes public!', vent_text: 'https://taskmaster.com/press', user_id: 1}
   Vent.create({
     title: req.body.title,
-    vent_url: req.body.vent_url,
+    vent_text: req.body.vent_text,
     user_id: req.session.user_id
   })
     .then(dbVentData => res.json(dbVentData))
