@@ -13,7 +13,7 @@ class Vent extends Model {
         },
         attributes: [
           "id",
-          "vent_url",
+          "vent_text",
           "title",
           "created_at",
           [
@@ -41,12 +41,12 @@ Vent.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vent_url: {
+    vent_text: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isURL: true,
-      },
+      // validate: {
+      //   isURL: true,
+      // },
     },
     user_id: {
       type: DataTypes.INTEGER,
