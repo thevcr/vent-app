@@ -1,19 +1,7 @@
 <ul class="vent-list">
   {{#each vents as |vent|}}
   <li>
-    <article class="vent">
-      <div class="title">
-        <a href="{{vent_text}}" target="_blank">{{vent.title}}</a>
-        <br>
-        <span>{{vent.vent_text}}</span>
-      </div>
-      <div class="meta">
-        {{vote_count}} flame(s) by {{user.username}} on
-        {{created_at}}
-        |
-        <a href="/vent/{{vent_id}}">{{vent.comments.length}} comment(s)</a>
-      </div>
-    </article>
+    {{> vent-info vent }}
   </li>
   {{/each}}
 </ul>

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Vent, User, Comment, Vote } = require('../../models');
+const { Vent, User, Comment, Upvote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
       'vent_text',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE vent.id = vote.vent_id)'), 'vote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
     ],
     include: [
       {
@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
       'vent_text',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE vent.id = vote.vent_id)'), 'vote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
     ],
     include: [
       {
@@ -76,7 +76,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', vent_text: 'https://taskmaster.com/press', user_id: 1}
   Vent.create({
     title: req.body.title,
     vent_text: req.body.vent_text,
@@ -90,9 +89,9 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.put('/upvote', withAuth, (req, res) => {
-  // custom static method created in models/Vent.js
-  Vent.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-    .then(updatedVoteData => res.json(updatedVoteData))
+  // pass session id along with all destructured properties on req.body
+  Upvote.upvote({ ...req.body, user_id: req.session.user_id }, { Upvote, Comment, User })
+    .then(updatedUpvoteData => res.json(updatedUpvoteData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

@@ -1,7 +1,7 @@
 // import all models
 const Vent = require('./Vent');
 const User = require('./User');
-const Vote = require('./Vote');
+const Upvote = require('./Upvote');
 const Comment = require('./Comment');
 
 // create associations
@@ -15,34 +15,34 @@ Vent.belongsTo(User, {
 });
 
 // User.belongsToMany(Vent, {
-//   through: Vote,
-//   as: 'voted_vents',
+//   through: Upvote,
+//   as: 'upvoted_vents',
 //   foreignKey: 'user_id',
 //   onDelete: 'SET NULL'
 // });
 
 // Vent.belongsToMany(User, {
-//   through: Vote,
-//   as: 'voted_vents',
+//   through: Upvote,
+//   as: 'upvoted_vents',
 //   foreignKey: 'vent_id',
 //   onDelete: 'SET NULL'
 // });
 
-Vote.belongsTo(User, {
+Upvote.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(Vent, {
+Upvote.belongsTo(Vent, {
   foreignKey: 'vent_id',
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Vote, {
+User.hasMany(Upvote, {
   foreignKey: 'user_id'
 });
 
-Vent.hasMany(Vote, {
+Vent.hasMany(Upvote, {
   foreignKey: 'vent_id'
 });
 
@@ -65,4 +65,4 @@ Vent.hasMany(Comment, {
   foreignKey: 'vent_id'
 });
 
-module.exports = { User, Vent, Vote, Comment };
+module.exports = { User, Vent, Upvote, Comment };

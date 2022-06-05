@@ -1,5 +1,5 @@
 <section>
-  <h2>Create New Post</h2>
+  <h2>Create New Vent</h2>
 
   <form class="new-vent-form">
     <div>
@@ -7,7 +7,7 @@
       <input type="text" id="vent-title" name="vent-title" />
     </div>
     <div>
-      <label for="vent-text">Link</label>
+      <label for="vent-text">Vent</label>
       <input id="vent-text" name="vent-text" />
     </div>
     <button type="submit" class="btn">Create</button>
@@ -20,7 +20,7 @@
   <ol>
     {{#each vents as |vent|}}
     <li>
-      {{> vent-info post}}
+      {{> vent-info vent}}
       <a href="/dashboard/edit/{{vent.id}}" class="edit-link">Edit vent</a>
     </li>
     {{/each}}

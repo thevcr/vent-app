@@ -4,7 +4,7 @@ async function newFormHandler(event) {
     const title = document.querySelector('input[name="vent-title"]').value;
     const vent_text = document.querySelector('input[name="vent-text"]').value;
   
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/vents`, {
       method: 'POST',
       body: JSON.stringify({
         title,
@@ -22,4 +22,4 @@ async function newFormHandler(event) {
     }
   }
   
-  document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+  document.querySelector('.new-vent-form').addEventListener('submit', newFormHandler);

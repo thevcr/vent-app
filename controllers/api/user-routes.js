@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Vent, Comment, Vote } = require('../../models');
+const { User, Vent, Comment, Upvote } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -35,8 +35,8 @@ router.get('/:id', (req, res) => {
       {
         model: Vent,
         attributes: ['title'],
-        through: Vote,
-        as: 'voted_vents'
+        through: Upvote,
+        as: 'upvoted_vents'
       }
     ]
   })
@@ -54,7 +54,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,
     email: req.body.email,

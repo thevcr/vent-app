@@ -1,0 +1,35 @@
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h2>
+    Edit Vent
+  </h2>
+  <form class="edit-vent-form">
+    <div>
+      <input name="vent-title" type="text" value="{{vent.title}}" />
+      <span>({{format_url vent.vent_text}})</span>
+    </div>
+    <div>
+      {{vent.upvote_count}} {{format_plural "flame" vent.upvote_count}} by you on {{format_date vent.created_at}}
+      |
+      <a href="/vent/{{vent.id}}">{{vent.comments.length}} {{format_plural "comment" vent.comments.length}}</a>
+    </div>
+    <button type="submit">Save vent</button>
+    <button type="button" class="delete-vent-btn">Delete vent</button>
+  </form>
+</article>
+
+<form class="comment-form">
+  <div>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">add comment</button>
+  </div>
+</form>
+
+{{> comments vent.comments}}
+
+<script src="/javascript/edit-vent.js"></script>
+<script src="/javascript/delete-vent.js"></script>
+<script src="/javascript/comment.js"></script>
