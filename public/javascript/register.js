@@ -1,11 +1,11 @@
 
-const form = document.getElementById('');
+const form = document.getElementById('Register');
 form.addEventListener('submit', registerUser)
 
 async function registerUser(event) {
     event.preventDefault()
-    const username = document.getElementById('').value;
-    const password = document.getElementById('').value;
+    const username = document.getElementById('Register_Username').value;
+    const password = document.getElementById('Register_Password').value;
 if(!username || !password) {
     badSignUp.textContent= "Please fill out all fields";
 }
@@ -30,5 +30,5 @@ window.alert("Password Length must be at least 7 characters");
     }
   }
 }
-signUpButton.addEventListener("click", signUpFormHandler);
+document.getElementById("Register_Button").addEventListener('submit', registerUser);
 

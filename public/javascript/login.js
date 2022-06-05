@@ -1,9 +1,8 @@
 async function signupFormHandler(event) {
     event.preventDefault();
   
-    const username = document.getElementById("").value.trim();
-    const email = document.getElementById("").value.trim();
-    const password = document.getElementById("").value.trim();
+    const username = document.getElementById("Username_Login").value.trim();
+    const password = document.getElementById("Login_Password").value.trim();
   
     if (username && password) {
         const response = await fetch('/api/users', {
@@ -23,4 +22,4 @@ async function signupFormHandler(event) {
     }
   }
   
-  document.getElementById("").addEventListener('submit', signupFormHandler);
+  document.getElementById("Login_Button").addEventListener('submit', signupFormHandler);

@@ -1,11 +1,21 @@
 const submitComment = document.getElementById("");
-const text = document.getElementById("");
+const text = document.getElementById("Vent_Post");
 
+var postComment= document.getElementById("Comment");
+post.addEventListener("click", function(){
+    var commentText= document.getElementById("comment-box").value;
+    var ul = document.createElement("ul")
+    var li = document.createElement("li");
+    var text = document.createTextNode(commentBoxValue);
+    li.appendChild(text);
+    document.getElementById("unordered").appendChild(li);
+ 
 
+});
 // Comment Request
 const handleCommentSubmit = async (event) => {
   event.preventDefault();
-  const text = document.getElementById("").value.trim();
+  const text = document.getElementById("Vent_Post").value.trim();
 
   // getting post id from the window url
   const postId =

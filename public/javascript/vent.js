@@ -1,9 +1,7 @@
 const { text } = require("express");
 
-const ventTitle = document.getElementById('');
-const ventMessage = document.getElementById('');
-const ventSubmit = document.getElementById('');
-const ventError = document.getElementById('');
+const ventMessage = document.getElementById('Vent_Text');
+const ventSubmit = document.getElementById('Submit_Vent');
 
 //Create A Vent 
 const  ventPostHandler = async (event) => {

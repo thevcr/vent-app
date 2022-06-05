@@ -13,7 +13,8 @@
 
 <body style="/*background: url(&quot;design.jpg&quot;);*/background-position: 0 -60px;">
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav" style="background: var(--bs-gray-900);">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><img src="assets/img/angry.png" style="width: 70px;min-width: 100px;height: 100pxpx;"><span class="d-flex" style="font-size: 55px;font-family: Aldrich, sans-serif;height: 90px;">Vent</span></a><button data-bs-toggle="collapse" class="navbar-toggler"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><img src="assets/img/angry.png" style="width: 70px;min-width: 100px;height: 100pxpx;"><span class="d-flex" style="font-size: 55px;font-family: Aldrich, sans-serif;height: 90px;">Vent</span></a>
+        <button data-bs-toggle="collapse" class="navbar-toggler"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse text-center d-xl-flex">
                 <h1 style="color: rgba(255,255,255,0.5);font-family: Aldrich, sans-serif;font-size: 20px;font-style: italic;"></h1>
                 <ul class="navbar-nav mx-auto">
@@ -22,7 +23,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary shadow d-xl-flex" role="button" href="#Login"style="background: var(--bs-red);font-family: Aldrich, sans-serif;border-style: hidden;border-color: rgb(0,0,0);">Login</a>
+                </ul><a class="btn btn-primary shadow d-xl-flex" role="button" href="#Submit_Vent"style="background: var(--bs-red);font-family: Aldrich, sans-serif;border-style: hidden;border-color: rgb(0,0,0);">Login</a>
                 <a class="btn btn-primary shadow d-xl-flex" role="button" href="#Register" style="background: var(--bs-green);font-family: Aldrich, sans-serif;border-style: hidden;border-color: rgb(0,0,0);">Sign up</a>
             </div>
         </div>
@@ -55,8 +56,11 @@
                         <div class="card shadow-sm">
                             <div class="card-body px-4 py-5 px-md-5">
                                 <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"></div>
-                                <h5 class="fw-bold card-title" style="font-family: Aldrich, sans-serif;">Username</h5>
-                                <p class="text-muted card-text mb-4" style="font-family: Aldrich, sans-serif;">Their Post</p><button class="btn btn-success btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-red);border-style: none;"><img src="assets/img/flame.png" style="width: 25px;"></button><button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-body-color);border-style: none;"><img src="assets/img/fire-extinguisher-emoji-759732.png" style="width: 25px;"></button><button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-green);border-style: none;"><img src="assets/img/icons8-chat-message-50.png" style="width: 28px;"></button>
+                                <h5 class="fw-bold card-title" style="font-family: Aldrich, sans-serif;" id="Vent_Post_Username">Username</h5>
+                                <p class="text-muted card-text mb-4" style="font-family: Aldrich, sans-serif;" id="Vent_Post">Their Post</p>
+                                <button class="btn btn-success btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-red);border-style: none;"><img src="assets/img/flame.png" id="Like" style="width: 25px;"></button>
+                                <button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-body-color);border-style: none;"><img src="assets/img/fire-extinguisher-emoji-759732.png" id="Dislike"style="width: 25px;"></button>
+                                <button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-green);border-style: none;"><img src="assets/img/icons8-chat-message-50.png" id="Comment" style="width: 28px;"></button>
                             </div>
                         </div>
                     </div>
@@ -64,8 +68,11 @@
                         <div class="card shadow-sm">
                             <div class="card-body px-4 py-5 px-md-5">
                                 <div class="bs-icon-lg d-flex justify-content-center align-items-center mb-3 bs-icon" style="top: 1rem;right: 1rem;position: absolute;"></div>
-                                <h5 class="fw-bold card-title" style="font-family: Aldrich, sans-serif;">Username</h5>
-                                <p class="text-muted card-text mb-4" style="font-family: Aldrich, sans-serif;">Their Post</p><button class="btn btn-success btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-red);border-style: none;"><img src="assets/img/flame.png" style="width: 25px;"></button><button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-body-color);border-style: none;"><img src="assets/img/fire-extinguisher-emoji-759732.png" style="width: 25px;"></button><button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-green);border-style: none;"><img src="assets/img/icons8-chat-message-50.png" style="width: 28px;"></button>
+                                <h5 class="fw-bold card-title" style="font-family: Aldrich, sans-serif;" id="Vent_Post_Username">Username</h5>
+                                <p class="text-muted card-text mb-4" style="font-family: Aldrich, sans-serif;" id="Vent_Post">Their Post</p>
+                                <button class="btn btn-success btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-red);border-style: none;"><img src="assets/img/flame.png" id="Like" style="width: 25px;"></button>
+                                <button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-body-color);border-style: none;"><img src="assets/img/fire-extinguisher-emoji-759732.png" id="Dislike" style="width: 25px;"></button>
+                                <button class="btn btn-danger btn-sm shadow" type="button" style="font-family: Aldrich, sans-serif;background: var(--bs-green);border-style: none;"><img src="assets/img/icons8-chat-message-50.png" id="Comment"style="width: 28px;"></button>
                             </div>
                         </div>
                     </div>
@@ -80,8 +87,8 @@
                                         <h2  class="text-center mb-4" style="font-family: Aldrich, sans-serif;">LET IT OUT</h2>
                                         <form method="post">
                                             <div class="mb-3"></div>
-                                            <div class="mb-3"><textarea class="form-control" id="message-2" name="message" rows="6" placeholder="Message" style="font-family: Aldrich, sans-serif;"></textarea></div>
-                                            <div><button id="Login"class="btn btn-primary d-block w-100" type="submit" style="font-family: Aldrich, sans-serif;background: var(--bs-red);border-style: none;">VENT</button></div>
+                                            <div class="mb-3"><textarea class="form-control" id="Vent_Text" name="message" rows="6" placeholder="Message" style="font-family: Aldrich, sans-serif;"></textarea></div>
+                                            <div><button id="Submit_Vent"class="btn btn-primary d-block w-100" type="submit" style="font-family: Aldrich, sans-serif;background: var(--bs-red);border-style: none;">VENT</button></div>
                                         </form>
                                     </div>
                                 </div>
@@ -94,20 +101,20 @@
                                 <h1 style="text-align: center;font-family: Aldrich, sans-serif;color: var(--bs-white);background: #dc3545;width: 476px;">Login</h1>
                                 <div class="card mb-5">
                                     <div class="card-body d-flex flex-column align-items-center"><img src="assets/img/angry.png" style="width: 60px;min-width: 100px;height: 100px;">
-                                        <form id="Register"class="text-center" method="post">
-                                            <div class="mb-3"></div><input class="form-control" type="email" name="email" placeholder="Email" style="font-family: Aldrich, sans-serif;">
-                                            <div class="mb-3"></div><input class="form-control" type="password" name="password" placeholder="Password" style="font-family: Aldrich, sans-serif;">
-                                            <div class="mb-3"></div><button class="btn btn-danger d-block w-100" type="submit" style="font-family: Aldrich, sans-serif;border-style: none;">Login</button>
+                                        <form id="Register" class="text-center" method="post">
+                                            <div class="mb-3"></div><input class="form-control" id="Username_Login" type="email" name="email" placeholder="Email" style="font-family: Aldrich, sans-serif;">
+                                            <div class="mb-3"></div><input class="form-control" type="password" name="password" placeholder="Password" id="Login_Password" style="font-family: Aldrich, sans-serif;">
+                                            <div class="mb-3"></div><button class="btn btn-danger d-block w-100" type="submit" id="Login_Button" style="font-family: Aldrich, sans-serif;border-style: none;">Login</button>
                                         </form>
                                     </div>
                                 </div>
                                 <h1 style="text-align: center;font-family: Aldrich, sans-serif;color: var(--bs-white);background: var(--bs-green);">Register</h1>
                                 <div class="card mb-5">
                                     <div class="card-body d-flex flex-column align-items-center"><img src="assets/img/angry.png" style="width: 60px;min-width: 100px;height: 100px;">
-                                        <form class="text-center" method="post">
-                                            <div class="mb-3"></div><input class="form-control" type="email" name="email" placeholder="Email" style="font-family: Aldrich, sans-serif;">
-                                            <div class="mb-3"></div><input class="form-control" type="password" name="password" placeholder="Password" style="font-family: Aldrich, sans-serif;">
-                                            <div class="mb-3"></div><button class="btn btn-danger d-block w-100" type="submit" style="background: var(--bs-green);font-family: Aldrich, sans-serif;border-style: none;">Register</button>
+                                        <form id="Login" class="text-center" method="post">
+                                            <div class="mb-3"></div><input class="form-control" type="email" name="email" placeholder="Username" id="Register_Username" "style="font-family: Aldrich, sans-serif;">
+                                            <div class="mb-3"></div><input class="form-control" type="password" name="password" placeholder="Password" id="Register_Password" style="font-family: Aldrich, sans-serif;">
+                                            <div class="mb-3"></div><button class="btn btn-danger d-block w-100" type="submit" id="Register_Button" style="background: var(--bs-green);font-family: Aldrich, sans-serif;border-style: none;">Register</button>
                                         </form>
                                     </div>
                                 </div>
