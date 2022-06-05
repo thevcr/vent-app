@@ -90,7 +90,7 @@ router.post('/', withAuth, (req, res) => {
 
 router.put('/upvote', withAuth, (req, res) => {
   // pass session id along with all destructured properties on req.body
-  Upvote.upvote({ ...req.body, user_id: req.session.user_id }, { Upvote, Comment, User })
+  Vent.upvote({ ...req.body, user_id: req.session.user_id }, { Upvote, Comment, User })
     .then(updatedUpvoteData => res.json(updatedUpvoteData))
     .catch(err => {
       console.log(err);
