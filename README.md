@@ -13,11 +13,12 @@ This project uses:
 - HTML
 - CSS
 - Javascript
-- Bootstrap
+- MaterializeCSS
 - Heroku
 - Express
 - Node
 - Sequelize ORM
+- MYSQL
 
 
 ## Installation
