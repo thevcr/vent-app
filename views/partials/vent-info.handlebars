@@ -1,0 +1,13 @@
+<article class="vent">
+  <div class="title card-panel">
+    <span>{{title}}
+    <br>{{vent_text}}
+    </span>
+
+  </div>
+  <div class="meta">
+    {{upvote_count}} {{format_plural "flame" upvote_count}} by {{user.username}} on {{format_date created_at}}
+    |
+    <a href="/vent/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+  </div>
+</article>

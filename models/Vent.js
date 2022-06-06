@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 
 class Vent extends Model {
   static upvote(body, models) {
-    return models.Vote.create({
+    return models.Upvote.create({
       user_id: body.user_id,
       vent_id: body.vent_id,
     }).then(() => {
@@ -16,17 +16,23 @@ class Vent extends Model {
           "vent_text",
           "title",
           "created_at",
-          [
-            sequelize.literal(
-              "(SELECT COUNT(*) FROM vote WHERE vent.id = vote.vent_id)"
-            ),
-            "vote_count",
-          ],
+          [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
         ],
+        include: [
+          {
+            model: models.Comment,
+            attributes: ['id', 'comment_text', 'vent_id', 'user_id', 'created_at'],
+            include: {
+              model: models.User,
+              attributes: ['username']
+            }
+          }
+        ]
       });
     });
   }
 }
+  
 
 // create fields/columns for Vent model
 Vent.init(
@@ -43,18 +49,15 @@ Vent.init(
     },
     vent_text: {
       type: DataTypes.STRING,
-      allowNull: false,
-      // validate: {
-      //   isURL: true,
-      // },
+      allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
         model: "user",
         key: "id",
-      },
-    },
+      }
+    }
   },
   {
     sequelize,

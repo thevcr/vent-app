@@ -1,39 +1,30 @@
-const submitComment = document.getElementById("");
-const text = document.getElementById("Vent_Post");
-
-var postComment= document.getElementById("Comment");
-post.addEventListener("click", function(){
-    var commentText= document.getElementById("comment-box").value;
-    var ul = document.createElement("ul")
-    var li = document.createElement("li");
-    var text = document.createTextNode(commentBoxValue);
-    li.appendChild(text);
-    document.getElementById("unordered").appendChild(li);
- 
-
-});
-// Comment Request
-const handleCommentSubmit = async (event) => {
-  event.preventDefault();
-  const text = document.getElementById("Vent_Post").value.trim();
-
-  // getting post id from the window url
-  const postId =
-    window.location.href.split("/")[window.location.href.split("/").length - 1];
-  if (text.length === 0) {
-    window.
-    return
+async function commentFormHandler(event) {
+    event.preventDefault();
+  
+    const comment_text = document.querySelector('textarea[name="comment-body"]').value.trim();
+  
+    const vent_id = window.location.toString().split('/')[
+      window.location.toString().split('/').length - 1
+    ];
+  
+    if (comment_text) {
+        const response = await fetch('/api/comments', {
+          method: 'POST',
+          body: JSON.stringify({
+            vent_id,
+            comment_text
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      
+        if (response.ok) {
+          document.location.reload();
+        } else {
+          alert(response.statusText);
+        }
+      }
   }
-  const response = await fetch("/api/comments", {
-    method: "post",
-    body: JSON.stringify({
-      text: text,
-      post: postId,
-    }),
-    headers: { "Content-Type": "application/json" },
-  });
-
-  if (response.ok) {
-    document.location.replace(window.location.href);
-  }
-};
+  
+  document.querySelector('.comment-form').addEventListener('submit', commentFormHandler);
