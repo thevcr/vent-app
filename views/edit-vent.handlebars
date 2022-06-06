@@ -9,7 +9,7 @@
       <span>{{vent.vent_text}}</span>
     </div>
     <div>
-      {{vent.upvote_count}} {{format_plural "flame" vent.upvote_count}} <img src="/assets/img/flame.png" style="width: 25px"> by you on {{format_date vent.created_at}}
+      {{vent.upvote_count}} {{format_plural "flame" vent.upvote_count}} <img src="/assets/img/flame.png" style="width: 25px"> | {{vent.downvote_count}} {{format_plural "douse" vent.downvote_count}} <img src="/assets/img/fire-extinguisher-emoji-759732.png" style="width: 25px"> by you on {{format_date vent.created_at}}
       |
       <a href="/vent/{{vent.id}}">{{vent.comments.length}} {{format_plural "comment" vent.comments.length}}</a>
     </div>

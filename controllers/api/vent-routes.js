@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Vent, User, Comment, Upvote } = require('../../models');
+const { Vent, User, Comment, Upvote, Downvote } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
       'vent_text',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE vent.id = downvote.vent_id)'), 'downvote_count']
     ],
     include: [
       {
@@ -45,7 +46,8 @@ router.get('/:id', (req, res) => {
       'vent_text',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE vent.id = downvote.vent_id)'), 'downvote_count']
     ],
     include: [
       {
@@ -92,6 +94,16 @@ router.put('/upvote', withAuth, (req, res) => {
   // pass session id along with all destructured properties on req.body
   Vent.upvote({ ...req.body, user_id: req.session.user_id }, { Upvote, Comment, User })
     .then(updatedUpvoteData => res.json(updatedUpvoteData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put('/downvote', withAuth, (req, res) => {
+  // pass session id along with all destructured properties on req.body
+  Vent.downvote({ ...req.body, user_id: req.session.user_id }, { Downvote, Comment, User })
+    .then(updatedDownvoteData => res.json(updatedDownvoteData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

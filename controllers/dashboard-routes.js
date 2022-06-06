@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Vent, User, Comment, Upvote } = require('../models');
+const { Vent, User, Comment, Upvote, Downvote } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all vents for dashboard
@@ -16,7 +16,8 @@ router.get('/', withAuth, (req, res) => {
       'vent_text',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE vent.id = downvote.vent_id)'), 'downvote_count']
     ],
     include: [
       {
@@ -50,7 +51,8 @@ router.get('/edit/:id', withAuth, (req, res) => {
       'vent_text',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM upvote WHERE vent.id = upvote.vent_id)'), 'upvote_count'],
+      [sequelize.literal('(SELECT COUNT(*) FROM downvote WHERE vent.id = downvote.vent_id)'), 'downvote_count']
     ],
     include: [
       {
