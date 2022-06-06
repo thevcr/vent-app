@@ -1,11 +1,11 @@
-async function disupvoteClickHandler(event) {
+async function downvoteClickHandler(event) {
     event.preventDefault();
   
     const id = window.location.toString().split('/')[
       window.location.toString().split('/').length - 1
     ];
   
-    const response = await fetch('/api/vents/disupvote', {
+    const response = await fetch('/api/vents/downvote', {
         method: 'PUT',
         body: JSON.stringify({
           vent_id: id
@@ -17,7 +17,10 @@ async function disupvoteClickHandler(event) {
       
       if (response.ok) {
         document.location.reload();
+        
       } else {
         alert(response.statusText);
       }
   }
+
+  document.querySelector('.downvote-btn').addEventListener('click', downvoteClickHandler);

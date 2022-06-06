@@ -6,7 +6,7 @@
 
   </div>
   <div class="meta">
-    {{upvote_count}} {{format_plural "flame" upvote_count}} by {{user.username}} on {{format_date created_at}}
+    {{upvote_count}} {{format_plural "flame" upvote_count}} | {{downvote_count}} {{format_plural "douse" downvote_count}} by {{user.username}} on {{format_date created_at}}
     |
     <a href="/vent/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>

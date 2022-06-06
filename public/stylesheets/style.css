@@ -138,7 +138,7 @@
     transition: background-color .1s;
   }
 
-  .dislike-btn{
+  .downvote-btn{
     background-color: #7d140f;
     transition: background-color .1s;
   }

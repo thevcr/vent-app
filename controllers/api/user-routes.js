@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Vent, Comment, Upvote } = require('../../models');
+const { User, Vent, Comment, Upvote, Downvote } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -31,6 +31,12 @@ router.get('/:id', (req, res) => {
           model: Vent,
           attributes: ['title']
         }
+      },
+      {
+        model: Vent,
+        attributes: ['title'],
+        through: Downvote,
+        as: 'downvoted_vents'
       },
       {
         model: Vent,
@@ -75,7 +81,6 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
       email: req.body.email
@@ -115,7 +120,6 @@ router.post('/logout', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // pass in req.body instead to only update what's passed through
   User.update(req.body, {
